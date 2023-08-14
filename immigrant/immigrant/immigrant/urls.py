@@ -15,9 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+from immin.views import CustomPasswordChangeView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    # admin
     path('admin/', admin.site.urls),
+    # immin
     path('', include('immin.urls')),
+    # allauth
+    path('email-confirmation-done',
+        TemplateView.as_view(template_name="immin/email_confirm_done.html"),
+        name="account_email_confirmation_done"),
+    #패스워드변경후 화면이동
+    path('password/change/', CustomPasswordChangeView.as_view(), name="account_password_change"),
     path('', include('allauth.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

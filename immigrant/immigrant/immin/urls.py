@@ -10,7 +10,5 @@ urlpatterns = [
     path('board/job', views.post_job, name='post_job'), #<int:pk>넣어야..
     path('board/offer', views.post_offer, name='post_offer'), #<int:pk>넣어야..
     path('board/pro', views.post_pro, name='post_pro'), #<int:pk>넣어야..
-    path('login/', auth_views.LoginView.as_view(template_name='immin/login.html'), name='login'),
-    path('signup/', views.signup, name='signup'),
     path('mypage/', views.mypage, name='mypage'),
 ]

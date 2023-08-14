@@ -15,9 +15,9 @@
     <div>
         <h5>내정보<h5>
         <hr>
-        <h5>이름: </h5>
+        <h5>이름: {{ user.nickname }}</h5>
         <hr>
-        <h5>계정정보: </h5>
+        <h5>계정정보: {{ user.email }}</h5>
         <hr>
         <br>
         <h3>내가 쓴 게시글 목록</h3>
@@ -43,6 +43,7 @@
             {% endcomment %}
         </ul>
         <hr>
+        <p><a href="{% url 'account_change_password' %}">비밀번호변경</a></p>
 
         {% comment %}
         <form method="post" action="{% url 'delete_account' %}">

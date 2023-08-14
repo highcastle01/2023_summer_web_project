@@ -36,10 +36,10 @@
                     </div>
                       <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'mypage' %}">마이페이지</a>
-                          </li>
                           {% if user.is_authenticated %}
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'mypage' %}">마이페이지</a>
+                            </li>
                             <li class="nav-item">
                               <a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a>
                             </li>
