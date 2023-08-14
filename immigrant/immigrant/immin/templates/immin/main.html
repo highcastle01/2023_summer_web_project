@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/style.css' %}">
+{% endblock css %}
+
+{% block logo_text %}
+    <div class="top-center-text">
+        <h2>이민넷에 오신 것을 환영합니다</h2>
+        <h3>쉽고 간편한 질문과 구인구직을 통해 빠른 교류를 이뤄내세요</h3>
+    </div>
+{% endblock logo_text %}
+
+{% block content %}
+    <div class="container center-container">
+        <a href="{% url 'chatbot' %}">
+            <img class="center-image" src="{% static 'immin/images/fubao3.jpg' %}" alt="Image 1">
+        </a>
+        <a href="{% url 'post_base' %}">
+            <img class="center-image" src="{% static 'immin/images/fubao4.jpg' %}" alt="Image 2">
+        </a>
+    </div>
+    <div class="top-center-text">
+        <h2>여기에는 주요 뉴스만 빼놓은 자료들 넣을거임<h2>
+    </div>
+{% endblock content %}

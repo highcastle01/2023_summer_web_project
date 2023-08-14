@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/signup.css' %}">
+{% endblock css %}
+
+{% block logo_text %}
+{% endblock logo_text %}
+
+{% block content %}
+<div class="top-center-text no-underline">
+    <a href="{% url 'signup' %}" class="no-underline"><h2>회원가입</h2></a>
+</div>
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <div class="container my-3">
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            {% comment %}
+            {% include "immin.form_errors.html" %}
+            {% endcomment %}
+            <div class="mb-3">
+                <label for="username">아이디</label>
+                <input type="text" class="form-control" name="username" id="username"
+                       value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="password1">비밀번호</label>
+                <input type="password" class="form-control" name="password1" id="password1"
+                       value="{{ form.password1.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="password2">비밀번호 확인</label>
+                <input type="password" class="form-control" name="password2" id="password2"
+                       value="{{ form.password2.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="email">이메일</label>
+                <input type="text" class="form-control" name="email" id="email"
+                       value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">가입하기</button>
+        </form>
+    </div>
+  </div>
+</form>
+{% endblock content %}

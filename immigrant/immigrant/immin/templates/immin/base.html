@@ -1,0 +1,80 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>이민넷</title>
+    <meta charset="UTF-8">
+    {% block css %}
+    {% endblock css %}
+    <link rel="stylesheet" href="{% static 'immin/css/style.css' %}">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div id="warp">
+        <div id="header">
+            <div id="nav">
+                <div class="logo"> <!--왼쪽 상단에 늘 있을 로고-->
+                    <!--<a href="{% url 'main' %}"><img src="{% static 'immin/images/fubao3.jpg' %}"></a>-->
+                </div>
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'main' %}">이민넷</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'chatbot' %}">챗봇</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'post_base' %}">구인구직</a>
+                        </li>
+                      </ul>
+                    </div>
+                      <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'mypage' %}">마이페이지</a>
+                          </li>
+                          {% if user.is_authenticated %}
+                            <li class="nav-item">
+                              <a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a>
+                            </li>
+                          {% else %}
+                            <li class="nav-item">
+                              <a class="nav-link" href="{% url 'account_login' %}">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{% url 'account_signup' %}">회원가입</a>
+                            </li>
+                          {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+            {% block header %} <!--게시글 화면에서는 위에 로고랑 통째로 묶어서-->
+            {% endblock header %}
+        </div>
+        {% block logo_text %} <!--로고가 필요한 화면. 메인이나 로그인-->
+        {% endblock logo_text %}
+        <div id="content">
+            <div class="container">
+                {% block content %} <!--띄워줄 콘텐츠-->
+                {% endblock content%}
+            </div>
+        </div>
+        <div id="footer">
+            <footer class="fixed-bottom">
+                <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 1)">
+                    © 2023 Copyright:
+                    <a class="text-white no-underline" href="{%url 'main' %}">이민넷</a>
+                </div>
+            </footer>              
+        </div>
+    </div>
+</body>
+</html>
+

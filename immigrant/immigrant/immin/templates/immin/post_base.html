@@ -1,0 +1,103 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/post_base.css' %}">
+{% endblock css %}
+
+{% block logo_text %} <!--게시판 화면이므로 로고 넣기-->
+    
+    <div class="top-center-text no-underline">
+        <a href="{% url 'post_base' %}" class="no-underline"><h2>구인구직</h2></a>
+    </div>
+    {% block sub_logo %}
+    {% endblock sub_logo %}
+{% endblock logo_text %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light text-white-color">
+                <ul class="nav nav-tabs w-100">
+                    <li class="nav-item">
+                        <a href="{% url 'post_all' %}" class="nav-link font-weight-bold">전체게시글</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'post_offer' %}" class="nav-link font-weight-bold">구인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'post_job' %}" class="nav-link font-weight-bold">구직</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'post_pro' %}" class="nav-link font-weight-bold">홍보</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">글쓴이</th>
+                    <th scope="col">작성일</th>
+                    <th scope="col">조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>HY여친 생긴거 실화냐</td>
+                    <td>JSM</td>
+                    <td>2023.08.11</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>위에 글 구라임</td>
+                    <td>HY</td>
+                    <td>2023.08.11</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>배고프다</td>
+                    <td>JDI</td>
+                    <td>2023.08.10</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>이글은영국에서시작되어</td>
+                    <td>ISH</td>
+                    <td>2023.08.09</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>첫글 내가 먹음</td>
+                    <td>???</td>
+                    <td>2023.08.08</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <a class="btn btn-primary">글쓰기</a>
+        <div class="container center-text">
+            <div class="text-center">
+                <ul class="pagination">
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                </ul>
+            </div>
+        </div>
+        {% block posts %}
+        {% endblock posts %}
+        <!--각각 전체, 구인, 구직, 홍보마다 글 다르게-->
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/main.css' %}">
+{% endblock css %}
+
+{% block logo_text %}
+    <div class="top-center-text">
+        <a href="{% url 'chatbot' %}" class="no-underline"><h2>챗봇</h2></a>
+    </div>
+{% endblock logo_text %}
+
+{% block content %}
+    <p> Talking Space </p>
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/style.css' %}">
+{% endblock css %}
+
+{% block logo_text %}
+    <div class="top-center-text">
+        <a href="{% url 'mypage' %}" class="no-underline"><h2>마이페이지</h2></a>
+    </div>
+{% endblock logo_text %}
+
+{% block content %}
+    <div>
+        <h5>내정보<h5>
+        <hr>
+        <h5>이름: </h5>
+        <hr>
+        <h5>계정정보: </h5>
+        <hr>
+        <br>
+        <h3>내가 쓴 게시글 목록</h3>
+        <ul>
+            {% comment %}
+                {% for post in posts %}
+                    <li>{{ post.title }}</li>
+                {% empty %}
+                    <li>작성한 게시글이 없습니다.</li>
+                {% endfor %}
+            {% endcomment %}
+        </ul>
+        <hr>
+    
+        <h3>내가 쓴 댓글 목록</h3>
+        <ul>
+            {% comment %}
+                {% for comment in comments %}
+                    <li>{{ comment.text }}</li>
+                    {% empty %}
+                    <li>작성한 댓글이 없습니다.</li>
+                {% endfor %}
+            {% endcomment %}
+        </ul>
+        <hr>
+
+        {% comment %}
+        <form method="post" action="{% url 'delete_account' %}">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="회원탈퇴">
+        </form>
+        {% endcomment %}
+    </div>
+{% endblock content %}

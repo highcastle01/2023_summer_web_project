@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+  
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .offcanvas {
+      width: 50%; /* 원하는 크기로 조절 */
+    }
+  }
+
+  .fa-1x {
+    font-size: 1.5rem;
+  }
+  .navbar-toggler.toggler-example {
+    cursor: pointer;
+  }
+  .dark-blue-text {
+    color: #0A38F5;
+  }
+  .dark-pink-text {
+    color: #AC003A;
+  }
+  .dark-amber-text {
+    color: #ff6f00;
+  }
+  .dark-teal-text {
+    color: #004d40;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+
+  .center-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .top-center-text {
+    text-align: center;
+    margin-top: 70px;
+  }
+
+  .center-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .no-underline {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 10px; /* 원하는 간격으로 조정 */
+  }
+
+  .custom-list-group-item {
+    background-color: rgba(1,1,1);
+    /* 원하는 다른 스타일 속성을 추가할 수 있습니다 */
+  }
+
+  .text-white-color{
+    color: rgba(255,255,255);
+  }
