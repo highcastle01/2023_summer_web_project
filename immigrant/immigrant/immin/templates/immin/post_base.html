@@ -42,50 +42,30 @@
                     <th scope="col">번호</th>
                     <th scope="col">제목</th>
                     <th scope="col">글쓴이</th>
-                    <th scope="col">작성일</th>
                     <th scope="col">조회수</th>
+                    <th scope="col">작성일</th>
                 </tr>
             </thead>
             <tbody>
+                {% if posts %}
+                {% for post in posts %}
                 <tr>
-                    <td>5</td>
-                    <td>HY여친 생긴거 실화냐</td>
-                    <td>JSM</td>
-                    <td>2023.08.11</td>
-                    <td>3</td>
+                    <td><a class="no-underline" href="{% url 'post_detail' forloop.counter %}">{{ forloop.counter }}</a></td>
+                    <td><a class="no-underline" href="{% url 'post_detail' forloop.counter %}">{{ post.title }}</a></td>
+                    <td><a class="no-underline" href="{% url 'post_detail' forloop.counter %}">{{ post.author.nickname }}</a></td>
+                    <td><a class="no-underline" href="{% url 'post_detail' forloop.counter %}">{{ post.view_rating }}</a></td>
+                    <td><a class="no-underline" href="{% url 'post_detail' forloop.counter %}">{{ post.dt_created }}</a></td>
                 </tr>
+                {% endfor %}
+                {% else %}
                 <tr>
-                    <td>4</td>
-                    <td>위에 글 구라임</td>
-                    <td>HY</td>
-                    <td>2023.08.11</td>
-                    <td>11</td>
+                    <td colspan="3" class="center-text">질문이 없습니다.</td>
                 </tr>
-                <tr>
-                    <td>3</td>
-                    <td>배고프다</td>
-                    <td>JDI</td>
-                    <td>2023.08.10</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>이글은영국에서시작되어</td>
-                    <td>ISH</td>
-                    <td>2023.08.09</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>첫글 내가 먹음</td>
-                    <td>???</td>
-                    <td>2023.08.08</td>
-                    <td>3</td>
-                </tr>
+                {% endif %}
             </tbody>
         </table>
         <hr>
-        <a class="btn btn-primary">글쓰기</a>
+        <a class="btn btn-primary" href="{% url 'write_post' %}">글쓰기</a>
         <div class="container center-text">
             <div class="text-center">
                 <ul class="pagination">

@@ -13,22 +13,20 @@
 
 {% block content %}
     <div>
-        <h5>내정보<h5>
-        <hr>
-        <h5>이름: {{ user.nickname }}</h5>
+        <h5>닉네임: {{ user.nickname }}</h5>
         <hr>
         <h5>계정정보: {{ user.email }}</h5>
+        <hr>
+        <h5>가입일: {{ user.date_joined }}</h5>
         <hr>
         <br>
         <h3>내가 쓴 게시글 목록</h3>
         <ul>
-            {% comment %}
-                {% for post in posts %}
-                    <li>{{ post.title }}</li>
-                {% empty %}
-                    <li>작성한 게시글이 없습니다.</li>
-                {% endfor %}
-            {% endcomment %}
+            {% for post in posts %}
+                <a href="{% url 'post_detail' post.id %}"><li>{{ post.title }}</li></a>
+            {% empty %}
+                <li>작성한 게시글이 없습니다.</li>
+            {% endfor %}
         </ul>
         <hr>
     

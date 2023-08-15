@@ -16,6 +16,7 @@ class User(AbstractUser):
     
 class Post(models.Model):
     # 글의 제목, 내용 , 작성일, 마지막 수정일
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     content = models.TextField()
     image1 = models.ImageField(upload_to="post_pics", blank=True)
@@ -23,6 +24,7 @@ class Post(models.Model):
     image3 = models.ImageField(upload_to="post_pics", blank=True)
     dt_created = models.DateTimeField(verbose_name="Date Created", auto_now_add=True)
     dt_modified = models.DateTimeField(verbose_name="Date Modified", auto_now=True)
+    view_rating = models.PositiveIntegerField(default=0)
     
     def __str__(self):
         return self.title

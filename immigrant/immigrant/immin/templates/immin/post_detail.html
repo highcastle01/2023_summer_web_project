@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'immin/css/post_base.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{post.title}}</h1>
+        <p class="author">{{post.author.nickname}}</p>
+        <p class="date">{{post.dt_created}}</p>
+        <p class="date_md">수정일 <span>{{post.dt_modified}}</span></p>
+    </div>
+
+    <div class="content">
+        <p class="text">{{post.content|linebreaksbr}}</p>
+        {% if post.image1 %}
+        <img src="{{ post.image1.url }}" alt="{{ post.title }} Image">
+        {% endif %}
+    </div>
+        {% if post.author == user %}
+        <a class="btn btn-primary" href="{% url 'edit_post' post_id %}">수정하기</a>
+        <a class="btn btn-primary" href="{% url 'edit_post' post_id %}">삭제하기</a>
+        {% endif %}
+        <div class="btn">
+        <div class="btn_list"><a href="{% url 'post_base' %}">목록으로</a></div>
+    </div>
+{% endblock content %}

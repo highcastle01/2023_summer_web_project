@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+
+{% block content %}
+<head>
+    <title>Edit Post</title>
+</head>
+<body>
+    <h1>Edit Post</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">수정하기</button>
+    </form>
+</body>
+</html>
+{% endblock content%}
